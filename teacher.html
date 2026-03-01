@@ -83,6 +83,36 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        .analysis-section {
+            background-color: #fffbeb;
+            border: 2px solid #fde68a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .analysis-section h3 {
+            color: #b45309;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .analysis-table th {
+            background-color: #fef08a;
+            color: #854d0e;
+        }
+
+        .count-badge {
+            background-color: #ef4444;
+            color: white;
+            border-radius: 50%;
+            padding: 4px 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -100,7 +130,24 @@
             <button class="refresh-btn" onclick="loadStudents()">تحديث البيانات 🔄</button>
         </div>
 
-        <p>يتم عرض بيانات الطلاب المخزنة محلياً لتسهيل المتابعة اللحظية.</p>
+        <div class="analysis-section" id="analysis-container" style="display: none;">
+            <h3>📊 تحليل المهارات المفقودة (نقاط الضعف الجماعية)</h3>
+            <p style="font-size: 0.9em; color: #666;">يوضح هذا الجدول المهارات المحددة التي أخطأ فيها الطلاب وعدد الذين
+                يحتاجون لإعادة شرحها.</p>
+            <table class="analysis-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70%; text-align: right;">المهارة / الخطأ الشائع</th>
+                        <th>عدد الطلاب المخطئين</th>
+                    </tr>
+                </thead>
+                <tbody id="skills-analysis-body">
+                    <!-- سيتم تعبئة التحليل هنا بواسطة JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top: 30px; border-bottom: 2px solid #efefef; padding-bottom: 10px;">📋 تفاصيل تقدم الطلاب</h3>
 
         <table>
             <thead>
@@ -145,6 +192,53 @@
             }
         }
 
+        // دالة عرض وتحليل المهارات المفقودة
+        function renderSkillsAnalysis(studentsData) {
+            const analysisContainer = document.getElementById('analysis-container');
+            const analysisBody = document.getElementById('skills-analysis-body');
+
+            if (!studentsData || Object.keys(studentsData).length === 0) {
+                analysisContainer.style.display = 'none';
+                return;
+            }
+
+            // تجميع المهارات
+            let skillCounts = {};
+            let hasErrors = false;
+
+            for (const data of Object.values(studentsData)) {
+                if (data.failedSkills && data.failedSkills.length > 0) {
+                    hasErrors = true;
+                    data.failedSkills.forEach(skill => {
+                        skillCounts[skill] = (skillCounts[skill] || 0) + 1;
+                    });
+                }
+            }
+
+            if (!hasErrors) {
+                analysisContainer.style.display = 'none';
+                return;
+            }
+
+            // تحويل إلى مصفوفة للترتيب التنازلي
+            let sortedSkills = Object.keys(skillCounts).map(skill => {
+                return { name: skill, count: skillCounts[skill] };
+            }).sort((a, b) => b.count - a.count);
+
+            // عرض البيانات
+            analysisBody.innerHTML = '';
+            sortedSkills.forEach(skillObj => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="text-align: right; font-weight: bold; color: #475569;">${skillObj.name}</td>
+                    <td><span class="count-badge">${skillObj.count}</span> طلاب</td>
+                `;
+                analysisBody.appendChild(tr);
+            });
+
+            analysisContainer.style.display = 'block';
+        }
+
         // دالة عرض البيانات في الجدول
         function renderStudents(studentsData) {
             const tableBody = document.getElementById('students-table-body');
@@ -187,6 +281,9 @@
                 `;
                 tableBody.appendChild(tr);
             }
+
+            // تحديث جدول التحليل مع كل تحديث للطلاب
+            renderSkillsAnalysis(studentsData);
         }
 
         window.loadStudents = function () {
@@ -202,12 +299,14 @@
                 if (useFirebase) {
                     remove(ref(db, 'students')).then(() => {
                         renderStudents({});
+                        renderSkillsAnalysis({});
                     }).catch(error => {
                         console.error("خطأ في مسح البيانات السحابية: ", error);
                     });
                 } else {
                     localStorage.removeItem('math_lesson_students');
                     renderStudents({});
+                    renderSkillsAnalysis({});
                 }
             }
         };
