@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة المعلم - متابعة تقدم الطلاب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .level-1 {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .level-2 {
+            background-color: #fef08a;
+            color: #854d0e;
+        }
+
+        .level-3 {
+            background-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .refresh-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .refresh-btn:hover {
+            background: #2563eb;
+        }
+
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body class="teacher-view">
+    <div class="dashboard-container">
+        <div style="text-align: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e2e8f0;">
+            <div style="font-size: 1.1rem; font-weight: bold; color: #64748b; margin-bottom: 5px;">مدرسة سعيد بن زيد
+                الإعدادية - قسم الرياضيات</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #3b82f6; margin-bottom: 5px;">دعم وتثبيت المهارات
+                الرياضية</div>
+        </div>
+
+        <div class="header-actions">
+            <h2>لوحة المتابعة والمراقبة (التقويم من أجل التعلم)</h2>
+            <button class="refresh-btn" onclick="loadStudents()">تحديث البيانات 🔄</button>
+        </div>
+
+        <p>يتم عرض بيانات الطلاب المخزنة محلياً لتسهيل المتابعة اللحظية.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>اسم الطالب</th>
+                    <th>مستوى التقدم</th>
+                    <th>النقاط</th>
+                    <th>الأخطاء والمهارات المفقودة</th>
+                    <th>وقت البدء</th>
+                </tr>
+            </thead>
+            <tbody id="students-table-body">
+                <!-- سيتم تعبئة البيانات هنا بواسطة JavaScript -->
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <button onclick="clearData()" style="background: #ef4444;" class="refresh-btn">مسح بيانات الجلسة
+                الحالية</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+
+        // !ضع رابط قاعدة بيانات Firebase الخاصة بك هنا (يجب أن يكون مطابقاً لما هو في script.js)!
+        const firebaseConfig = {
+            databaseURL: "https://interactive-lesson-de2d9-default-rtdb.firebaseio.com/"
+        };
+
+        let app, db;
+        let useFirebase = false;
+
+        if (firebaseConfig.databaseURL && !firebaseConfig.databaseURL.includes("REPLACE_WITH")) {
+            try {
+                app = initializeApp(firebaseConfig);
+                db = getDatabase(app);
+                useFirebase = true;
+            } catch (e) {
+                console.warn("فشل الاتصال بـ Firebase، سيتم استخدام LocalStorage كبديل.", e);
+            }
+        }
+
+        // دالة عرض البيانات في الجدول
+        function renderStudents(studentsData) {
+            const tableBody = document.getElementById('students-table-body');
+            tableBody.innerHTML = '';
+
+            if (!studentsData || Object.keys(studentsData).length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5">لا يوجد طلاب مسجلون حالياً</td></tr>';
+                return;
+            }
+
+            for (const [name, data] of Object.entries(studentsData)) {
+                let badgeClass = '';
+                let levelName = '';
+
+                switch (data.level) {
+                    case 1: badgeClass = 'level-1'; levelName = 'المستوى الأول (استكشاف)'; break;
+                    case 2: badgeClass = 'level-2'; levelName = 'المستوى الثاني (تطبيق)'; break;
+                    case 3: badgeClass = 'level-3'; levelName = 'المستوى الثالث (تحدي)'; break;
+                    case 4: badgeClass = 'level-3'; levelName = 'المستوى الرابع (اختبار نهائي)'; break;
+                    default: badgeClass = 'level-3'; levelName = 'العودة للمنزل (مكتمل)';
+                }
+
+                let errorsText = `<div style="font-weight:bold; margin-bottom: 5px;">${data.errors > 0 ? `أخطأ ${data.errors} مرة` : 'لم يخطئ 🎉'}</div>`;
+                let skillsDiv = '';
+                if (data.failedSkills && data.failedSkills.length > 0) {
+                    let skillsList = data.failedSkills.map(s => `<li>${s}</li>`).join('');
+                    skillsDiv = `<ul style="margin-top: 5px; padding-right: 20px; text-align: right; color: #b91c1c; font-size: 0.9em;">${skillsList}</ul>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight: bold;">${name}</td>
+                    <td><span class="level-badge ${badgeClass}">${levelName}</span></td>
+                    <td dir="ltr" style="font-weight: bold; color: #0284c7;">${data.score} / ${data.totalScore || '-'}</td>
+                    <td style="text-align: right; vertical-align: top;">
+                        ${errorsText}
+                        ${skillsDiv}
+                    </td>
+                    <td>${data.timeStarted || 'غير محدد'}</td>
+                `;
+                tableBody.appendChild(tr);
+            }
+        }
+
+        window.loadStudents = function () {
+            if (!useFirebase) {
+                // جلب البيانات من LocalStorage
+                let studentsData = JSON.parse(localStorage.getItem('math_lesson_students')) || {};
+                renderStudents(studentsData);
+            }
+        };
+
+        window.clearData = function () {
+            if (confirm('هل أنت متأكد من مسح جميع بيانات الطلاب الحالية؟')) {
+                if (useFirebase) {
+                    remove(ref(db, 'students')).then(() => {
+                        renderStudents({});
+                    }).catch(error => {
+                        console.error("خطأ في مسح البيانات السحابية: ", error);
+                    });
+                } else {
+                    localStorage.removeItem('math_lesson_students');
+                    renderStudents({});
+                }
+            }
+        };
+
+        // التهيئة وبدء الاستماع
+        if (useFirebase) {
+            const studentsRef = ref(db, 'students');
+            // استماع مباشر للتحديثات السحابية اللحظية من جميع الجوالات حول العالم!
+            onValue(studentsRef, (snapshot) => {
+                const data = snapshot.val() || {};
+                renderStudents(data);
+            });
+        } else {
+            // التحميل الأولي (محلياً)
+            window.loadStudents();
+            // تحديث تلقائي كل 10 ثواني (محاكاة للاتصال المباشر)
+            setInterval(window.loadStudents, 10000);
+
+            // استماع للتحديثات بين صفحات متصفح المعلم إن وجدت
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'math_lesson_students') {
+                    window.loadStudents();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
