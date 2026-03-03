@@ -127,7 +127,12 @@
 
         <div class="header-actions">
             <h2>لوحة المتابعة والمراقبة (التقويم من أجل التعلم)</h2>
-            <button class="refresh-btn" onclick="loadStudents()">تحديث البيانات 🔄</button>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button class="refresh-btn" onclick="loadStudents()">تحديث البيانات 🔄</button>
+                <button class="export-btn" onclick="exportToExcel()"
+                    style="background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: inherit; transition: 0.3s; font-weight: bold;">تصدير
+                    إكسيل 📊</button>
+            </div>
         </div>
 
         <div class="analysis-section" id="analysis-container" style="display: none;">
@@ -309,6 +314,38 @@
                     renderSkillsAnalysis({});
                 }
             }
+        };
+
+        window.exportToExcel = function () {
+            const table = document.querySelector('table');
+            let csvContent = "";
+            let bom = "\\uFEFF";
+            csvContent += bom;
+
+            const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText.trim());
+            csvContent += headers.join(',') + "\\n";
+
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            rows.forEach(row => {
+                const cols = Array.from(row.querySelectorAll('td'));
+                if (cols.length === 1) return;
+
+                const rowData = cols.map(td => {
+                    let text = td.innerText.replace(/\\r?\\n|\\r/g, ' ').trim();
+                    if (text.includes(',')) text = `"${text}"`;
+                    return text;
+                });
+                csvContent += rowData.join(',') + "\\n";
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `تقييم_المعادلات_${new Date().toLocaleDateString('en-GB').replace(/\\/ / g, '-')}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         };
 
         // التهيئة وبدء الاستماع

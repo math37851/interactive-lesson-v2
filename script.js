@@ -48,16 +48,16 @@ const levelsData = [
                         { text: "ثانياً: نقسم على معامل x للحصول على المتغير بمفرده.", math: "$$x = 3$$" }
                     ]
                 },
-                equation: "$$2x + 6 = 4$$",
+                equation: "$$3x + 5 = 17$$",
                 steps: [
-                    { expected: "2x = -2", options: ["2x = 10", "2x = -2", "2x = 2", "x = -2"], userInstruction: "اطرح 6 من الطرفين", hint: "تخلص من +6 بعكس العملية (الطرح) من الطرفين", success: "ممتاز! تخلصنا من الجمع." },
-                    { expected: "x = -1", options: ["x = -1", "x = -4", "x = 1", "x = 0"], userInstruction: "اقسم الطرفين على معامل x", hint: "تخلص من الرقم 2 المضروب في x بالقسمة عليه", success: "رائع! لقد أوجدت قيمة x." }
+                    { skill: "التخلص من الجمع والطرح المباشر", expected: "3x = 12", options: ["3x = 22", "3x = 12", "x = 12", "3x = -12"], userInstruction: "اطرح 5 من الطرفين", hint: "تخلص من +5 بعكس العملية (الطرح) من الطرفين", success: "ممتاز! تخلصنا من الجمع." },
+                    { skill: "القسمة على رقم موجب", expected: "x = 4", options: ["x = 4", "x = -4", "x = 6", "x = 3"], userInstruction: "اقسم الطرفين على معامل x", hint: "تخلص من الرقم 3 المضروب في x بالقسمة عليه", success: "رائع! لقد أوجدت قيمة x." }
                 ],
                 backup: {
-                    equation: "$$4x + 8 = 16$$",
+                    equation: "$$4x - 2 = 14$$",
                     steps: [
-                        { expected: "4x = 8", options: ["4x = 24", "4x = 8", "4x = 2", "x = 8"], userInstruction: "سؤال تدريبي: اطرح 8 من الطرفين", hint: "تخلص من +8 بعكس العملية (الطرح) من الطرفين", success: "ممتاز! خطوة صحيحة." },
-                        { expected: "x = 2", options: ["x = 2", "x = 4", "x = 32", "x = -2"], userInstruction: "اقسم الطرفين على معامل x", hint: "اقسم الطرفين على الرقم 4", success: "أحسنت!" }
+                        { skill: "التخلص من الجمع والطرح المباشر", expected: "4x = 16", options: ["4x = 12", "4x = 16", "4x = -16", "x = 16"], userInstruction: "سؤال تدريبي: اجمع 2 للطرفين", hint: "تخلص من -2 بعكس العملية (الجمع)", success: "ممتاز! خطوة صحيحة." },
+                        { skill: "القسمة على رقم موجب", expected: "x = 4", options: ["x = 4", "x = 12", "x = -4", "x = 8"], userInstruction: "اقسم الطرفين على معامل x", hint: "اقسم الطرفين على 4", success: "أحسنت!" }
                     ]
                 }
             },
@@ -71,16 +71,16 @@ const levelsData = [
                         { text: "ثانياً: نقسم على معامل x.", math: "$$x = 5$$" }
                     ]
                 },
-                equation: "$$3x - 6 = 12$$",
+                equation: "$$5x - 7 = 18$$",
                 steps: [
-                    { expected: "3x = 18", options: ["3x = 6", "3x = 18", "x = 18", "3x = -6"], userInstruction: "انقل الثابت للطرف الآخر", hint: "تخلص من -6 بجمع 6 للطرفين", success: "صحيح! الخطوة الأولى تمت بنجاح." },
-                    { expected: "x = 6", options: ["x = 5", "x = 15", "x = 6", "x = 21"], userInstruction: "أوجد قيمة x بالمواظبة على القسمة", hint: "اقسم 18 على 3", success: "أحسنت! الإجابة صحيحة." }
+                    { skill: "تجميع المتغيرات والثوابت", expected: "5x = 25", options: ["5x = 11", "5x = 25", "x = 25", "5x = -25"], userInstruction: "انقل الثابت للطرف الآخر", hint: "تخلص من -7 بجمع 7 للطرفين", success: "صحيح! الخطوة الأولى تمت بنجاح." },
+                    { skill: "القسمة على رقم موجب", expected: "x = 5", options: ["x = 5", "x = 20", "x = -5", "x = 4"], userInstruction: "أوجد قيمة x بالمواظبة على القسمة", hint: "اقسم 25 على 5", success: "أحسنت! الإجابة صحيحة." }
                 ],
                 backup: {
-                    equation: "$$5x - 10 = 20$$",
+                    equation: "$$2x - 9 = 11$$",
                     steps: [
-                        { expected: "5x = 30", options: ["5x = 10", "5x = 30", "5x = 20", "x = 30"], userInstruction: "سؤال تدريبي: اجمع 10 للطرفين", hint: "تخلص من -10 بجمع 10 للطرفين", success: "ممتاز!" },
-                        { expected: "x = 6", options: ["x = 5", "x = 6", "x = 4", "x = 150"], userInstruction: "أوجد قيمة x", hint: "اقسم الطرفين على 5", success: "صحيح!" }
+                        { skill: "تجميع المتغيرات والثوابت", expected: "2x = 20", options: ["2x = 2", "2x = 20", "x = 20", "2x = -20"], userInstruction: "سؤال تدريبي: اجمع 9 للطرفين", hint: "تخلص من -9 بجمع 9 للطرفين", success: "ممتاز!" },
+                        { skill: "القسمة على رقم موجب", expected: "x = 10", options: ["x = 10", "x = 9", "x = 11", "x = -10"], userInstruction: "أوجد قيمة x", hint: "اقسم الطرفين على 2", success: "صحيح!" }
                     ]
                 }
             },
@@ -94,10 +94,10 @@ const levelsData = [
                         { text: "ثم اقسم على 6.", math: "$$x = 6$$" }
                     ]
                 },
-                equation: "$$5x + 6 = 36$$",
+                equation: "$$4x + 12 = 52$$",
                 steps: [
-                    { expected: "5x = 30", options: ["5x = 42", "5x = 30", "x = 30", "5x = -30"], userInstruction: "اطرح 6 من الطرفين", hint: "تخلص من +6 بالطرح", success: "رائع!" },
-                    { expected: "x = 6", options: ["x = 5", "x = 6", "x = 7", "x = 25"], userInstruction: "أوجد قيمة المعادلة", hint: "اقسم الطرفين على 5", success: "تمام!" }
+                    { skill: "الجمع والطرح الذهني مع أرقام كبيرة", expected: "4x = 40", options: ["4x = 64", "4x = 40", "x = 40", "4x = -40"], userInstruction: "اطرح 12 من الطرفين", hint: "تخلص من +12 بالطرح", success: "رائع!" },
+                    { skill: "قسمة أرقام كبيرة", expected: "x = 10", options: ["x = 10", "x = 12", "x = 8", "x = 40"], userInstruction: "أوجد قيمة المعادلة", hint: "اقسم الطرفين على 4", success: "تمام!" }
                 ]
             },
             {
@@ -113,14 +113,14 @@ const levelsData = [
                 },
                 equation: "$$x - 8 \\ge 3$$",
                 steps: [
-                    { expected: "x >= 11", options: ["x <= 11", "x >= 5", "x > 11", "x >= 11"], userInstruction: "حل المتباينة كأنها معادلة", hint: "اجمع 8 للطرفين مع الحفاظ على علامة التباين كما هي", success: "عمل رائع! المتباينة الأولى صحيحة." },
-                    { expected: "NL_ge_11", options: ["NL_ge_11", "NL_le_11", "NL_gt_11", "NL_lt_11"], userInstruction: "مثل الحل على خط الأعداد", hint: "العلامة ≥ تعني أن الدائرة مغلقة والاتجاه يمين نحو القيم الأكبر", success: "تمثيل صحيح لخط الأعداد!" }
+                    { skill: "حل متباينة خطوة واحدة", expected: "x >= 11", options: ["x <= 11", "x >= 5", "x > 11", "x >= 11"], userInstruction: "حل المتباينة كأنها معادلة", hint: "اجمع 8 للطرفين مع الحفاظ على علامة التباين كما هي", success: "عمل رائع! المتباينة الأولى صحيحة." },
+                    { skill: "تمثيل المتباينة على خط الأعداد", expected: "NL_ge_11", options: ["NL_ge_11", "NL_le_11", "NL_gt_11", "NL_lt_11"], userInstruction: "مثل الحل على خط الأعداد", hint: "العلامة ≥ تعني أن الدائرة مغلقة والاتجاه يمين نحو القيم الأكبر", success: "تمثيل صحيح لخط الأعداد!" }
                 ],
                 backup: {
                     equation: "$$x - 5 \\ge 4$$",
                     steps: [
-                        { expected: "x >= 9", options: ["x <= 9", "x >= -1", "x > 9", "x >= 9"], userInstruction: "سؤال تدريبي: اجمع 5 للطرفين", hint: "اجمع 5 للطرفين دون تغيير الإشارة", success: "أحسنت، فهمت القاعدة!" },
-                        { expected: "NL_ge_9", options: ["NL_ge_9", "NL_le_9", "NL_gt_9", "NL_lt_9"], userInstruction: "سؤال تدريبي: مثل الحل على خط الأعداد", hint: "العلامة ≥ تعني دائرة مغلقة لليمين", success: "رائع!" }
+                        { skill: "حل متباينة خطوة واحدة", expected: "x >= 9", options: ["x <= 9", "x >= -1", "x > 9", "x >= 9"], userInstruction: "سؤال تدريبي: اجمع 5 للطرفين", hint: "اجمع 5 للطرفين دون تغيير الإشارة", success: "أحسنت، فهمت القاعدة!" },
+                        { skill: "تمثيل المتباينة على خط الأعداد", expected: "NL_ge_9", options: ["NL_ge_9", "NL_le_9", "NL_gt_9", "NL_lt_9"], userInstruction: "سؤال تدريبي: مثل الحل على خط الأعداد", hint: "العلامة ≥ تعني دائرة مغلقة لليمين", success: "رائع!" }
                     ]
                 }
             }
@@ -143,16 +143,16 @@ const levelsData = [
                 },
                 equation: "$$2(x - 5) = 20$$",
                 steps: [
-                    { expected: "2x - 10 = 20", options: ["2x - 5 = 20", "2x - 10 = 20", "2x + 10 = 20", "x - 10 = 20"], userInstruction: "استخدم خاصية التوزيع للتخلص من الأقواس", hint: "اضرب 2 في x واضرب 2 في -5", success: "توزيع صحيح!" },
-                    { expected: "2x = 30", options: ["2x = 10", "2x = 40", "2x = 30", "x = 30"], userInstruction: "تخلص من الثابت للطرف الآخر", hint: "اجمع 10 للطرفين", success: "خطوة موفقة." },
-                    { expected: "x = 15", options: ["x = 15", "x = 60", "x = 10", "x = 5"], userInstruction: "اقسم على المعامل", hint: "اقسم الطرفين على 2", success: "بطل! لقد حللت المعادلة." }
+                    { skill: "توزيع الضرب على الجمع والطرح (أقواس)", expected: "2x - 10 = 20", options: ["2x - 5 = 20", "2x - 10 = 20", "2x + 10 = 20", "x - 10 = 20"], userInstruction: "استخدم خاصية التوزيع للتخلص من الأقواس", hint: "اضرب 2 في x واضرب 2 في -5", success: "توزيع صحيح!" },
+                    { skill: "التخلص من الثوابت الجبرية", expected: "2x = 30", options: ["2x = 10", "2x = 40", "2x = 30", "x = 30"], userInstruction: "تخلص من الثابت للطرف الآخر", hint: "اجمع 10 للطرفين", success: "خطوة موفقة." },
+                    { skill: "القسمة على معامل كبير", expected: "x = 15", options: ["x = 15", "x = 60", "x = 10", "x = 5"], userInstruction: "اقسم على المعامل", hint: "اقسم الطرفين على 2", success: "بطل! لقد حللت المعادلة." }
                 ],
                 backup: {
                     equation: "$$3(x + 2) = 24$$",
                     steps: [
-                        { expected: "3x + 6 = 24", options: ["3x + 2 = 24", "3x + 6 = 24", "x + 6 = 24", "3x - 6 = 24"], userInstruction: "سؤال تدريبي: وزّع 3 على القوس", hint: "اضرب 3 في x وفي 2", success: "توزيع صحيح!" },
-                        { expected: "3x = 18", options: ["3x = 30", "3x = 18", "x = 18", "3x = 8"], userInstruction: "اطرح 6 من الطرفين", hint: "انقل +6 بعكس العملية", success: "خطوة موفقة." },
-                        { expected: "x = 6", options: ["x = 6", "x = 8", "x = 18", "x = -6"], userInstruction: "أوجد قيمة x", hint: "اقسم الطرفين على 3", success: "بطل!" }
+                        { skill: "توزيع الضرب على الجمع والطرح (أقواس)", expected: "3x + 6 = 24", options: ["3x + 2 = 24", "3x + 6 = 24", "x + 6 = 24", "3x - 6 = 24"], userInstruction: "سؤال تدريبي: وزّع 3 على القوس", hint: "اضرب 3 في x وفي 2", success: "توزيع صحيح!" },
+                        { skill: "التخلص من الثوابت الجبرية", expected: "3x = 18", options: ["3x = 30", "3x = 18", "x = 18", "3x = 8"], userInstruction: "اطرح 6 من الطرفين", hint: "انقل +6 بعكس العملية", success: "خطوة موفقة." },
+                        { skill: "القسمة على معامل كبير", expected: "x = 6", options: ["x = 6", "x = 8", "x = 18", "x = -6"], userInstruction: "أوجد قيمة x", hint: "اقسم الطرفين على 3", success: "بطل!" }
                     ]
                 }
             },
@@ -169,9 +169,9 @@ const levelsData = [
                 },
                 equation: "$$3(2x - 3) = 12$$",
                 steps: [
-                    { expected: "6x - 9 = 12", options: ["6x - 3 = 12", "6x - 9 = 12", "5x - 9 = 12", "6x + 9 = 12"], userInstruction: "وزع الـ 3 على القوس", hint: "اضرب 3 في 2x ثم 3 في -3", success: "ممتاز!" },
-                    { expected: "6x = 21", options: ["6x = 3", "6x = 21", "x = 21", "6x = -21"], userInstruction: "اجمع 9 للطرفين", hint: "انقل -9 بعكس العملية", success: "صحيح!" },
-                    { expected: "x = 21/6", options: ["x = 21/6", "x = 6/21", "x = 2", "x = 3"], userInstruction: "اقسم على معامل x", hint: "اقسم الطرفين على 6 (أو أوجد الناتج العشري 3.5)", success: "إجابة دقيقة!" }
+                    { skill: "التوزيع المزدوج (معامل المتغير)", expected: "6x - 9 = 12", options: ["6x - 3 = 12", "6x - 9 = 12", "5x - 9 = 12", "6x + 9 = 12"], userInstruction: "وزع الـ 3 على القوس", hint: "اضرب 3 في 2x ثم 3 في -3", success: "ممتاز!" },
+                    { skill: "التخلص من الثوابت الجبرية", expected: "6x = 21", options: ["6x = 3", "6x = 21", "x = 21", "6x = -21"], userInstruction: "اجمع 9 للطرفين", hint: "انقل -9 بعكس العملية", success: "صحيح!" },
+                    { skill: "إيجاد الناتج في صورة كسرية", expected: "x = 21/6", options: ["x = 21/6", "x = 6/21", "x = 2", "x = 3"], userInstruction: "اقسم على معامل x", hint: "اقسم الطرفين على 6 (أو أوجد الناتج العشري 3.5)", success: "إجابة دقيقة!" }
                 ]
             },
             {
@@ -188,16 +188,16 @@ const levelsData = [
                 },
                 equation: "$$3x + 6 > 27$$",
                 steps: [
-                    { expected: "3x > 21", options: ["3x > 33", "3x < 21", "3x > 21", "x > 21"], userInstruction: "تخلص من +6 للطرفين", hint: "اطرح 6 من الطرفين ولا تغير علامة التباين", success: "عمل متقن!" },
-                    { expected: "x > 7", options: ["x < 7", "x > 7", "x > 18", "x > 6"], userInstruction: "أوجد قيمة x", hint: "اقسم الطرفين على 3", success: "إجابة دقيقة!" },
-                    { expected: "NL_gt_7", options: ["NL_gt_7", "NL_lt_7", "NL_ge_7", "NL_le_7"], userInstruction: "مثل الحل على خط الأعداد", hint: "العلامة > تعني أن الدائرة مفتوحة للقيم الأكبر (اليمين)", success: "تمثيل رائع!" }
+                    { skill: "حل متباينة متعددة الخطوات - خطوة الجمع والطرخ", expected: "3x > 21", options: ["3x > 33", "3x < 21", "3x > 21", "x > 21"], userInstruction: "تخلص من +6 للطرفين", hint: "اطرح 6 من الطرفين ولا تغير علامة التباين", success: "عمل متقن!" },
+                    { skill: "حل متباينة متعددة الخطوات - خطوة القسمة", expected: "x > 7", options: ["x < 7", "x > 7", "x > 18", "x > 6"], userInstruction: "أوجد قيمة x", hint: "اقسم الطرفين على 3", success: "إجابة دقيقة!" },
+                    { skill: "تمثيل المتباينة على خط الأعداد المفتوح", expected: "NL_gt_7", options: ["NL_gt_7", "NL_lt_7", "NL_ge_7", "NL_le_7"], userInstruction: "مثل الحل على خط الأعداد", hint: "العلامة > تعني أن الدائرة مفتوحة للقيم الأكبر (اليمين)", success: "تمثيل رائع!" }
                 ],
                 backup: {
                     equation: "$$4x - 5 > 27$$",
                     steps: [
-                        { expected: "4x > 32", options: ["4x < 32", "4x > 22", "4x > 32", "x > 32"], userInstruction: "سؤال تدريبي: اجمع 5 للطرفين", hint: "انقل -5 للطرف الآخر بالجمع", success: "صحيح!" },
-                        { expected: "x > 8", options: ["x < 8", "x > 8", "x > 7", "x > 28"], userInstruction: "أوجد المتباينة لـ x", hint: "اقسم على 4", success: "بطل!" },
-                        { expected: "NL_gt_8", options: ["NL_gt_8", "NL_lt_8", "NL_ge_8", "NL_le_8"], userInstruction: "مثل المتباينة", hint: "الدائرة مفتوحة لليمين", success: "عمل متقن جداً!" }
+                        { skill: "حل متباينة متعددة الخطوات - خطوة الجمع والطرخ", expected: "4x > 32", options: ["4x < 32", "4x > 22", "4x > 32", "x > 32"], userInstruction: "سؤال تدريبي: اجمع 5 للطرفين", hint: "انقل -5 للطرف الآخر بالجمع", success: "صحيح!" },
+                        { skill: "حل متباينة متعددة الخطوات - خطوة القسمة", expected: "x > 8", options: ["x < 8", "x > 8", "x > 7", "x > 28"], userInstruction: "أوجد المتباينة لـ x", hint: "اقسم على 4", success: "بطل!" },
+                        { skill: "تمثيل المتباينة على خط الأعداد المفتوح", expected: "NL_gt_8", options: ["NL_gt_8", "NL_lt_8", "NL_ge_8", "NL_le_8"], userInstruction: "مثل المتباينة", hint: "الدائرة مفتوحة لليمين", success: "عمل متقن جداً!" }
                     ]
                 }
             }
@@ -220,15 +220,15 @@ const levelsData = [
                 },
                 equation: "$$-4(2x - 6) = 2$$",
                 steps: [
-                    { expected: "-8x + 24 = 2", options: ["-8x - 24 = 2", "-8x + 24 = 2", "8x + 24 = 2", "-6x - 24 = 2"], userInstruction: "وزع العدد السالب وانتبه للإشارات!", hint: "اضرب -4 في 2x واضرب -4 في -6 (سالب×سالب=موجب)", success: "تركيز عالي! توزيع الإشارات صحيح." },
-                    { expected: "-8x = -22", options: ["-8x = 26", "-8x = -22", "8x = -22", "-8x = -26"], userInstruction: "انقل الثابت", hint: "اطرح 24 من الطرفين (2 - 24 = -22)", success: "خطوة صحيحة." },
-                    { expected: "x = 22/8", options: ["x = -22/8", "x = 22/8", "x = 2.5", "x = -2.75"], userInstruction: "اقسم الطرفين على -8 (أو اكتبه ككسر x=22/8)", hint: "-22 تقسيم -8 يعطيك رقماً موجباً", success: "عبقري! لقد تعاملت مع الأرقام السالبة والكسور." }
+                    { skill: "توزيع عدد سالب واختلاف الإشارات", expected: "-8x + 24 = 2", options: ["-8x - 24 = 2", "-8x + 24 = 2", "8x + 24 = 2", "-6x - 24 = 2"], userInstruction: "وزع العدد السالب وانتبه للإشارات!", hint: "اضرب -4 في 2x واضرب -4 في -6 (سالب×سالب=موجب)", success: "تركيز عالي! توزيع الإشارات صحيح." },
+                    { skill: "التخلص من الثوابت الجبرية", expected: "-8x = -22", options: ["-8x = 26", "-8x = -22", "8x = -22", "-8x = -26"], userInstruction: "انقل الثابت", hint: "اطرح 24 من الطرفين (2 - 24 = -22)", success: "خطوة صحيحة." },
+                    { skill: "القسمة على رقم سالب مع كسر", expected: "x = 22/8", options: ["x = -22/8", "x = 22/8", "x = 2.5", "x = -2.75"], userInstruction: "اقسم الطرفين على -8 (أو اكتبه ككسر x=22/8)", hint: "-22 تقسيم -8 يعطيك رقماً موجباً", success: "عبقري! لقد تعاملت مع الأرقام السالبة والكسور." }
                 ],
                 backup: {
                     equation: "$$-2x + 3 = 9$$",
                     steps: [
-                        { expected: "-2x = 6", options: ["-2x = 12", "-2x = 6", "2x = 6", "x = 6"], userInstruction: "سؤال تدريبي: اطرح 3 من الطرفين", hint: "انقل +3 بالطرح", success: "صحيح!" },
-                        { expected: "x = -3", options: ["x = 3", "x = -3", "x = -12", "x = 4"], userInstruction: "اقسم على عدد سالب", hint: "اقسم الطرفين على -2. تذكر موجب/سالب = سالب.", success: "ممتاز!" }
+                        { skill: "التخلص من الثوابت الجبرية", expected: "-2x = 6", options: ["-2x = 12", "-2x = 6", "2x = 6", "x = 6"], userInstruction: "سؤال تدريبي: اطرح 3 من الطرفين", hint: "انقل +3 بالطرح", success: "صحيح!" },
+                        { skill: "القسمة على رقم سالب مع كسر", expected: "x = -3", options: ["x = 3", "x = -3", "x = -12", "x = 4"], userInstruction: "اقسم على عدد سالب", hint: "اقسم الطرفين على -2. تذكر موجب/سالب = سالب.", success: "ممتاز!" }
                     ]
                 }
             },
@@ -245,14 +245,14 @@ const levelsData = [
                 },
                 equation: "$$-3x < 9$$",
                 steps: [
-                    { expected: "x > -3", options: ["x < -3", "x > -3", "x > 3", "x < 3"], userInstruction: "اقسم على عدد سالب وانتبه لعلامة التباين!", hint: "عند القسمة على عدد سالب (-3) يجب أن تعكس إشارة التباين من أصغر إلى أكبر", success: "ممتاز جداً! تذكرت القاعدة الذهبية للمتباينات." },
-                    { expected: "NL_gt_-3", options: ["NL_gt_-3", "NL_lt_-3", "NL_ge_-3", "NL_le_-3"], userInstruction: "مثل الحل على خط الأعداد", hint: "الآن المتباينة تشير إلى أن x أكبر من -3.", success: "خط أعداد رائع ومتقن." }
+                    { skill: "القسمة على سالب في المتباينات (عكس الإشارة الاجباري)", expected: "x > -3", options: ["x < -3", "x > -3", "x > 3", "x < 3"], userInstruction: "اقسم على عدد سالب وانتبه لعلامة التباين!", hint: "عند القسمة على عدد سالب (-3) يجب أن تعكس إشارة التباين من أصغر إلى أكبر", success: "ممتاز جداً! تذكرت القاعدة الذهبية للمتباينات." },
+                    { skill: "تمثيل المتباينة على خط الأعداد المفتوح لليسار", expected: "NL_gt_-3", options: ["NL_gt_-3", "NL_lt_-3", "NL_ge_-3", "NL_le_-3"], userInstruction: "مثل الحل على خط الأعداد", hint: "الآن المتباينة تشير إلى أن x أكبر من -3.", success: "خط أعداد رائع ومتقن." }
                 ],
                 backup: {
                     equation: "$$-5x \\ge 20$$",
                     steps: [
-                        { expected: "x <= -4", options: ["x >= -4", "x <= -4", "x <= 4", "x >= 4"], userInstruction: "سؤال تدريبي: اقسم على عدد سالب واعكس الإشارة", hint: "عند القسمة على سالب نعكس الإشارة من أكبر إلى أصغر", success: "بطل! إتقان تام للقاعدة." },
-                        { expected: "NL_le_-4", options: ["NL_le_-4", "NL_ge_-4", "NL_lt_-4", "NL_gt_-4"], userInstruction: "سؤال تدريبي: مثل الحل النهائي", hint: "انتبه لعلامة ≤ الناتجة (دائرة مغلقة، لليسار)", success: "إجابة مثالية وخالية من العيوب." }
+                        { skill: "القسمة على سالب في المتباينات (عكس الإشارة الاجباري)", expected: "x <= -4", options: ["x >= -4", "x <= -4", "x >= 4", "x <= 4"], userInstruction: "سؤال تدريبي: اقسم على سالب وانتبه بعناية!", hint: "تذكر قلب إشارة التباين من أكبر إلى أصغر", success: "أحسنت، لقد أتقنت الفكرة." },
+                        { skill: "تمثيل المتباينة على خط الأعداد المغلق لليسار", expected: "NL_le_-4", options: ["NL_le_-4", "NL_ge_-4", "NL_lt_-4", "NL_gt_-4"], userInstruction: "سؤال تدريبي: مثل الحل النهائي", hint: "انتبه لعلامة ≤ الناتجة (دائرة مغلقة، لليسار)", success: "إجابة مثالية وخالية من العيوب." }
                     ]
                 }
             }
@@ -266,26 +266,26 @@ const levelsData = [
                 skill: "حل معادلة بخطوتين (الاختبار النهائي)",
                 equation: "$$4x + 8 = 24$$",
                 steps: [
-                    { expected: "4x = 16", options: ["4x = 32", "4x = 16", "x = 16", "4x = -16"], userInstruction: "الاختبار النهائي: اطرح 8 من الطرفين", success: "صحيح!", hint: "تخلص من الموجب 8 بالطرح" },
-                    { expected: "x = 4", options: ["x = 4", "x = 16", "x = 8", "x = 2"], userInstruction: "اقسم على معامل x", success: "ممتاز!", hint: "اقسم على 4" }
+                    { skill: "التخلص من الجمع والطرح المباشر", expected: "4x = 16", options: ["4x = 32", "4x = 16", "x = 16", "4x = -16"], userInstruction: "الاختبار النهائي: اطرح 8 من الطرفين", success: "صحيح!", hint: "تخلص من الموجب 8 بالطرح" },
+                    { skill: "القسمة على رقم موجب", expected: "x = 4", options: ["x = 4", "x = 16", "x = 8", "x = 2"], userInstruction: "اقسم على معامل x", success: "ممتاز!", hint: "اقسم على 4" }
                 ]
             },
             {
                 skill: "معادلات مع أقواس (الاختبار النهائي)",
                 equation: "$$2(x - 3) = 10$$",
                 steps: [
-                    { expected: "2x - 6 = 10", options: ["2x - 3 = 10", "2x - 6 = 10", "2x + 6 = 10", "x - 6 = 10"], userInstruction: "استخدم خاصية التوزيع للتخلص من الأقواس", success: "صحيح!", hint: "اضرب 2 في x واضرب 2 في -3" },
-                    { expected: "2x = 16", options: ["2x = 4", "2x = 16", "x = 16", "2x = 13"], userInstruction: "اجمع 6 للطرفين", success: "صحيح!", hint: "انقل السالب للطرف الآخر بالجمع" },
-                    { expected: "x = 8", options: ["x = 8", "x = 5", "x = 16", "x = -8"], userInstruction: "اقسم على معامل x", success: "ممتاز!", hint: "اقسم على 2" }
+                    { skill: "توزيع الضرب على الجمع والطرح (أقواس)", expected: "2x - 6 = 10", options: ["2x - 3 = 10", "2x - 6 = 10", "2x + 6 = 10", "x - 6 = 10"], userInstruction: "استخدم خاصية التوزيع للتخلص من الأقواس", success: "صحيح!", hint: "اضرب 2 في x واضرب 2 في -3" },
+                    { skill: "التخلص من الثوابت الجبرية", expected: "2x = 16", options: ["2x = 4", "2x = 16", "x = 16", "2x = 13"], userInstruction: "اجمع 6 للطرفين", success: "صحيح!", hint: "انقل السالب للطرف الآخر بالجمع" },
+                    { skill: "القسمة على معامل كبير", expected: "x = 8", options: ["x = 8", "x = 5", "x = 16", "x = -8"], userInstruction: "اقسم على معامل x", success: "ممتاز!", hint: "اقسم على 2" }
                 ]
             },
             {
                 skill: "المتباينات والتوزيع السالب (الاختبار النهائي)",
                 equation: "$$-3x + 5 < -10$$",
                 steps: [
-                    { expected: "-3x < -15", options: ["-3x < -5", "-3x < -15", "3x < 15", "-3x > -15"], userInstruction: "اطرح 5 من الطرفين", success: "صحيح!", hint: "اطرح 5 من الطرفين: -10 - 5 = -15" },
-                    { expected: "x > 5", options: ["x < 5", "x > 5", "x > -5", "x < -5"], userInstruction: "اقسم على -3 وانتبه للإشارة", success: "رائع!", hint: "عند القسمة على سالب أعكس اتجاه المتباينة!" },
-                    { expected: "NL_gt_5", options: ["NL_gt_5", "NL_lt_5", "NL_ge_5", "NL_le_5"], userInstruction: "مثل الحل المستخرج على خط الأعداد", success: "إجابة شاملة وكاملة!", hint: "علامة أكبر > تعني دائرة مفتوحة لليمين" }
+                    { skill: "حل متباينة متعددة الخطوات - خطوة الجمع والطرخ", expected: "-3x < -15", options: ["-3x < -5", "-3x < -15", "3x < 15", "-3x > -15"], userInstruction: "اطرح 5 من الطرفين", success: "صحيح!", hint: "اطرح 5 من الطرفين: -10 - 5 = -15" },
+                    { skill: "القسمة على سالب في المتباينات (عكس الإشارة الاجباري)", expected: "x > 5", options: ["x < 5", "x > 5", "x > -5", "x < -5"], userInstruction: "اقسم على -3 وانتبه للإشارة", success: "رائع!", hint: "عند القسمة على سالب أعكس اتجاه المتباينة!" },
+                    { skill: "تمثيل المتباينة على خط الأعداد المفتوح", expected: "NL_gt_5", options: ["NL_gt_5", "NL_lt_5", "NL_ge_5", "NL_le_5"], userInstruction: "مثل الحل المستخرج على خط الأعداد", success: "إجابة شاملة وكاملة!", hint: "علامة أكبر > تعني دائرة مفتوحة لليمين" }
                 ]
             }
         ]
@@ -857,9 +857,13 @@ function checkAnswer() {
         appState.errors++;
         appState.score = Math.max(0, appState.score - 5); // تقليل النقاط للتحفيز على الحذر
         appState.madeErrorInCurrentQuestion = true; // تسجيل الخطأ لاقتراح سؤال تدريبي لاحقاً
-        if (currentQuestion.skill && !appState.failedSkills.includes(currentQuestion.skill)) {
-            appState.failedSkills.push(currentQuestion.skill);
+
+        // تسجيل المهارة الدقيقة للخطوة (الخطأ الشائع)، أو مهارة السؤال العامة
+        const skillToRecord = currentStepObj.skill || currentQuestion.skill;
+        if (skillToRecord && !appState.failedSkills.includes(skillToRecord)) {
+            appState.failedSkills.push(skillToRecord);
         }
+
         elements.displays.scoreOut.textContent = appState.score;
 
         feedbackEl.innerHTML = `<strong>خطأ:</strong> حاول مرة أخرى! <br>💡 <em>تلميح:</em> ${currentStepObj.hint}`;
